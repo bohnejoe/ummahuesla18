@@ -8,7 +8,7 @@ const AnyReactComponent = ({ text }) => <div className="marker">{text}</div>;
 class SimpleMap extends Component {
   constructor(props){
     super(props);
-    this.state = { lat: 0, lng: 0 };
+    this.state = { lat: 0, lng: 0, text: '' };
   }
 
   static defaultProps = {
@@ -24,8 +24,15 @@ class SimpleMap extends Component {
   };
 
   _onChildClick = (obj) => {
-    console.log(obj.lat, obj.lng);
-    this.setState({ lat: obj.lat, lng: obj.lng });
+    fetch('http://localhost:8080/?lat='+ obj.lat +'&lon='+ obj.lng,
+      new Headers({
+      'Access-Control-Allow-Origin': '*'
+    })).then(result => {
+      return result.json();
+    }).then(data => {
+      console.log(data);
+      this.setState({ lat: data.lat, lng: data.lng, text: data.qi});
+    });
   }
 
   render() {
@@ -40,7 +47,7 @@ class SimpleMap extends Component {
           <AnyReactComponent
             lat={ this.state.lat }
             lng={ this.state.lng }
-            text={'8.2'}
+            text={ this.state.text }
           />
         </GoogleMapReact>
       </div>

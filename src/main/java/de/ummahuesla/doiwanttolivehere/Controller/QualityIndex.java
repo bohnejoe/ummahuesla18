@@ -15,7 +15,7 @@ public class QualityIndex {
     String index(@RequestParam String lon, @RequestParam String lat) throws JsonProcessingException {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        QiResult result = QiResult.create();
+        QiResult result = QiResult.create(Double.parseDouble(lat), Double.parseDouble(lon));
 
         return objectMapper.writeValueAsString(result);
     }

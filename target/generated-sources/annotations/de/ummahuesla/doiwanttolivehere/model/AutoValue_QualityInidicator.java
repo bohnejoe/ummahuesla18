@@ -9,11 +9,11 @@ import javax.annotation.Generated;
  final class AutoValue_QualityInidicator extends QualityInidicator {
 
   private final String name;
-  private final String qi;
+  private final Double qi;
 
   AutoValue_QualityInidicator(
       String name,
-      String qi) {
+      Double qi) {
     if (name == null) {
       throw new NullPointerException("Null name");
     }
@@ -32,7 +32,7 @@ import javax.annotation.Generated;
 
   @JsonProperty
   @Override
-  String qi() {
+  public Double qi() {
     return qi;
   }
 
