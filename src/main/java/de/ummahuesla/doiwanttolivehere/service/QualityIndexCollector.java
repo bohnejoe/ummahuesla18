@@ -21,11 +21,11 @@ public class QualityIndexCollector {
 		collectors.add(new SunHoursPerYearCollector());
 	}
 
-	public QiResult collect(long lat, long lon) {
+	public QiResult collect(Double lat, Double lon) {
 		
 		Set<Score> scores = collectors.stream().map(c -> c.getScore(lat, lon)).collect(Collectors.toSet());
 		
-		QiResult qiResult = QiResult.create();
+		QiResult qiResult = QiResult.create(lat, lon);
 		return qiResult;
 		
 	}

@@ -12,6 +12,6 @@ public abstract class Collector {
 	@Value("score.max")
 	protected int scoreMax;
 	
-	public abstract Score getScore(long lat, long lon);
+	public abstract Score getScore(Double lat, Double lon);
 	
 }

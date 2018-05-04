@@ -10,13 +10,17 @@ import java.util.Set;
 @AutoValue
 public abstract class QiResult {
 
-    @JsonCreator public static QiResult create() {
-        Score arzt = Score.create("arzt", 1.5f);
-        return new AutoValue_QiResult(9.9f, Collections.singleton(arzt));
+    @JsonCreator public static QiResult create(Double lat, Double lng) {
+        Score arzt = Score.create("arzt", 1.5);
+        return new AutoValue_QiResult(Math.round(Math.random()*100)/10.0, lat, lng, Collections.singleton(arzt));
     }
 
-    @JsonProperty public abstract float overallScore();
-    
+	@JsonProperty public abstract Double overallScore();
+
+    @JsonProperty public abstract Double lat();
+
+    @JsonProperty public abstract Double lng();
+
     @JsonProperty public abstract Set<Score> inidicators();
 
 }

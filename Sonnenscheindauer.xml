@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FeatureInfoResponse xmlns:esri_wms="http://www.esri.com/wms" xmlns="http://www.esri.com/wms">
+<FIELDS OBJECTID="14" Shape="Polygon" SD_JAHR="1700 - 1749 h/Jahr" Shape_Length="25020860,68916" Shape_Area="6577063439,6327"></FIELDS>
+</FeatureInfoResponse>

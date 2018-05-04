@@ -7,11 +7,10 @@ import com.google.auto.value.AutoValue;
 @AutoValue
 public abstract class Score {
 
-    @JsonCreator public static Score create(String name, float score) {
+    @JsonCreator public static Score create(String name, Double score) {
         return new AutoValue_Score(name, score);
     }
 
     @JsonProperty public abstract String name();
-    @JsonProperty abstract float score();
-
+    @JsonProperty abstract Double score();
 }
