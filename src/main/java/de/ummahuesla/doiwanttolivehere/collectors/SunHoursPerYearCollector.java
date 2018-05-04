@@ -1,7 +1,9 @@
 package de.ummahuesla.doiwanttolivehere.collectors;
 
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
+import de.ummahuesla.doiwanttolivehere.model.Sunlight;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -10,7 +12,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.ummahuesla.doiwanttolivehere.model.QiResult;
 import de.ummahuesla.doiwanttolivehere.model.Score;
 import de.ummahuesla.doiwanttolivehere.repository.SunlightRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SunHoursPerYearCollector extends Collector {
 
 	@Autowired
@@ -18,7 +22,7 @@ public class SunHoursPerYearCollector extends Collector {
 	
 	@Override
 	public Score getScore(Double lat, Double lon) {
-//		Optional<Sunlight> fetch = sunlightRepository.fetch();
+		Optional<Sunlight> fetch = sunlightRepository.fetch(lon, lat);
 
         ObjectMapper objectMapper = new ObjectMapper();
         QiResult result = QiResult.create(lat, lon);
