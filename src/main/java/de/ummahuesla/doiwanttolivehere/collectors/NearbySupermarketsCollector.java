@@ -3,7 +3,9 @@ package de.ummahuesla.doiwanttolivehere.collectors;
 import java.util.concurrent.ThreadLocalRandom;
 
 import de.ummahuesla.doiwanttolivehere.model.Score;
+import org.springframework.stereotype.Component;
 
+@Component
 public class NearbySupermarketsCollector extends Collector {
 
 	@Override
