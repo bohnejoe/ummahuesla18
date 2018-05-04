@@ -13,29 +13,44 @@ import org.springframework.stereotype.Service;
 import de.ummahuesla.doiwanttolivehere.collectors.Collector;
 import de.ummahuesla.doiwanttolivehere.collectors.NearbyDoctorsCollector;
 import de.ummahuesla.doiwanttolivehere.collectors.NearbySupermarketsCollector;
+import de.ummahuesla.doiwanttolivehere.collectors.PlaygroundCollector;
+import de.ummahuesla.doiwanttolivehere.collectors.SchoolCollector;
 import de.ummahuesla.doiwanttolivehere.collectors.SunHoursPerYearCollector;
+import de.ummahuesla.doiwanttolivehere.collectors.TransportConnectionCollector;
 import de.ummahuesla.doiwanttolivehere.model.QiResult;
 import de.ummahuesla.doiwanttolivehere.model.Score;
 
 @Service
 public class QualityIndexService {
 
-    Set<Collector> collectors = new HashSet<Collector>();
+    private Set<Collector> collectors = new HashSet<Collector>();
     
     @Autowired
-    NearbySupermarketsCollector nearbySupermarketsCollector;
+    private NearbySupermarketsCollector nearbySupermarketsCollector;
     
     @Autowired
-    NearbyDoctorsCollector nearbyDoctorsCollector;
+    private NearbyDoctorsCollector nearbyDoctorsCollector;
     
     @Autowired
 	private SunHoursPerYearCollector sunHoursPerYearCollector;
+    
+    @Autowired
+    private PlaygroundCollector playgroundCollector;
+    
+    @Autowired
+    private SchoolCollector schoolCollector;
+    
+    @Autowired
+    private TransportConnectionCollector transportConnectionCollector;
     
     @PostConstruct
     public void init() {
     	collectors.add(nearbyDoctorsCollector);
     	collectors.add(nearbySupermarketsCollector);
     	collectors.add(sunHoursPerYearCollector);
+    	collectors.add(transportConnectionCollector);
+    	collectors.add(playgroundCollector);
+    	collectors.add(schoolCollector);
     }
 
 	public QiResult fetch(Double lat, Double lon) {
