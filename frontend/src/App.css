@@ -1,0 +1,35 @@
+.app {
+  text-align: center;
+}
+
+.app-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.app-title {
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+.app-intro {
+  font-size: large;
+}
+
+.marker {
+    text-transform: uppercase;
+    background-color: #ffffffbf;
+    border: 1px solid #d6d1d1;
+    display: inline-block;
+    border-radius: 100%;
+    font-size: 1.5em;
+    font-weight: bold;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    margin-left: -50px;
+    margin-top: -50px;
+}
