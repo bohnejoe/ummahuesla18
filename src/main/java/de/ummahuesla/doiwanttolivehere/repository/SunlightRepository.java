@@ -2,6 +2,8 @@ package de.ummahuesla.doiwanttolivehere.repository;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import de.ummahuesla.doiwanttolivehere.model.Sunlight;
+import de.ummahuesla.doiwanttolivehere.utils.BoundingBox;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,9 @@ import java.util.*;
 @Repository
 @EnableCaching
 public class SunlightRepository {
+
+    @Autowired
+    private BoundingBox boundingBox;
 
     public Optional<Sunlight> fetch(Double lat, Double lng) {
         String endpoint = "http://wirtschaft-risby.bayern.de/RisGate/servlet/Sonnenscheindauer";
@@ -35,25 +40,13 @@ public class SunlightRepository {
     private class Request {
         public MultiValueMap<String, String> create(Double lat, Double lng) {
 
-            double meters = 50;
-
-            // number of km per degree = ~111km (111.32 in google maps, but range varies between 110.567km at the equator and 111.699km at the poles)
-            // 1km in degree = 1 / 111.32km = 0.0089
-            // 1m in degree = 0.0089 / 1000 = 0.0000089
-            double coef = meters * 0.0000089;
-
-            double new_latitude = lat + coef;
-
-            // pi / 180 = 0.018
-            double new_longitude = lng + coef / Math.cos(lat * 0.018);
-
             MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
             map.put("version", Collections.singletonList("1.1.1"));
             map.put("request", Collections.singletonList("GetFeatureInfo"));
             map.put("layers", Collections.singletonList("sd_jahr"));
             map.put("styles", Collections.singletonList("default"));
             map.put("srs", Collections.singletonList("EPSG:4326"));
-            map.put("bbox", Collections.singletonList(lng + "," + lat + "," + new_longitude + "," + new_latitude));
+            map.put("bbox", Collections.singletonList(boundingBox.create(lng, lat)));
             map.put("width", Collections.singletonList("1044"));
             map.put("height", Collections.singletonList("906"));
             map.put("format", Collections.singletonList("text/html"));
