@@ -12,5 +12,5 @@ public abstract class Score {
     }
 
     @JsonProperty public abstract String name();
-    @JsonProperty abstract Double score();
+    @JsonProperty public abstract Double score();
 }

@@ -1,6 +1,7 @@
 package de.ummahuesla.doiwanttolivehere.service;
 
 import java.util.HashSet;
+import java.util.OptionalDouble;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -25,10 +26,9 @@ public class QualityIndexService {
 	}
 
 	public QiResult fetch(Double lat, Double lon) {
-		
 		Set<Score> scores = collectors.stream().map(c -> c.getScore(lat, lon)).collect(Collectors.toSet());
-		
-		QiResult qiResult = QiResult.create(lat, lon);
+		OptionalDouble overallScore = scores.stream().mapToDouble(s -> s.score()).average();
+		QiResult qiResult = QiResult.create(lat, lon, overallScore.getAsDouble(), scores);
 		return qiResult;
 		
 	}

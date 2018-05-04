@@ -9,20 +9,16 @@ import javax.annotation.Generated;
 @Generated("com.google.auto.value.processor.AutoValueProcessor")
  final class AutoValue_QiResult extends QiResult {
 
-  private final Double overallScore;
   private final Double lat;
   private final Double lng;
+  private final Double overallScore;
   private final Set<Score> inidicators;
 
   AutoValue_QiResult(
-      Double overallScore,
       Double lat,
       Double lng,
+      Double overallScore,
       Set<Score> inidicators) {
-    if (overallScore == null) {
-      throw new NullPointerException("Null overallScore");
-    }
-    this.overallScore = overallScore;
     if (lat == null) {
       throw new NullPointerException("Null lat");
     }
@@ -31,16 +27,14 @@ import javax.annotation.Generated;
       throw new NullPointerException("Null lng");
     }
     this.lng = lng;
+    if (overallScore == null) {
+      throw new NullPointerException("Null overallScore");
+    }
+    this.overallScore = overallScore;
     if (inidicators == null) {
       throw new NullPointerException("Null inidicators");
     }
     this.inidicators = inidicators;
-  }
-
-  @JsonProperty
-  @Override
-  public Double overallScore() {
-    return overallScore;
   }
 
   @JsonProperty
@@ -57,6 +51,12 @@ import javax.annotation.Generated;
 
   @JsonProperty
   @Override
+  public Double overallScore() {
+    return overallScore;
+  }
+
+  @JsonProperty
+  @Override
   public Set<Score> inidicators() {
     return inidicators;
   }
@@ -64,9 +64,9 @@ import javax.annotation.Generated;
   @Override
   public String toString() {
     return "QiResult{"
-         + "overallScore=" + overallScore + ", "
          + "lat=" + lat + ", "
          + "lng=" + lng + ", "
+         + "overallScore=" + overallScore + ", "
          + "inidicators=" + inidicators
         + "}";
   }
@@ -78,9 +78,9 @@ import javax.annotation.Generated;
     }
     if (o instanceof QiResult) {
       QiResult that = (QiResult) o;
-      return (this.overallScore.equals(that.overallScore()))
-           && (this.lat.equals(that.lat()))
+      return (this.lat.equals(that.lat()))
            && (this.lng.equals(that.lng()))
+           && (this.overallScore.equals(that.overallScore()))
            && (this.inidicators.equals(that.inidicators()));
     }
     return false;
@@ -90,11 +90,11 @@ import javax.annotation.Generated;
   public int hashCode() {
     int h$ = 1;
     h$ *= 1000003;
-    h$ ^= overallScore.hashCode();
-    h$ *= 1000003;
     h$ ^= lat.hashCode();
     h$ *= 1000003;
     h$ ^= lng.hashCode();
+    h$ *= 1000003;
+    h$ ^= overallScore.hashCode();
     h$ *= 1000003;
     h$ ^= inidicators.hashCode();
     return h$;
