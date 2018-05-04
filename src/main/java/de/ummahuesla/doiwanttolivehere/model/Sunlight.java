@@ -27,6 +27,8 @@ class Fields {
         this.shapeArea = shapeArea;
     }
 
+    private String version;
+
 
     private String objectId;
 

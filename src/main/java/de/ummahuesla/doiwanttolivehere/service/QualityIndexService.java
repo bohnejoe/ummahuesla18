@@ -38,8 +38,8 @@ public class QualityIndexService {
     	collectors.add(sunHoursPerYearCollector);
     }
 
-	public QiResult fetch(Double lat, Double lon) {
-		Set<Score> scores = collectors.stream().map(c -> c.getScore(lat, lon)).collect(Collectors.toSet());
+	public QiResult fetch(Double lat, Double lng) {
+		Set<Score> scores = collectors.stream().map(c -> c.getScore(lat, lng)).collect(Collectors.toSet());
 		
 		OptionalDouble overallScoreAverage = scores.stream().mapToDouble(s -> s.score()).average();
 		Double overallScore = 0.0;
@@ -47,7 +47,7 @@ public class QualityIndexService {
 			overallScore = overallScoreAverage.getAsDouble();
 		}
 				
-		QiResult qiResult = QiResult.create(lat, lon, overallScore, scores);
+		QiResult qiResult = QiResult.create(lat, lng, overallScore, scores);
 		return qiResult;
 	}
 	
