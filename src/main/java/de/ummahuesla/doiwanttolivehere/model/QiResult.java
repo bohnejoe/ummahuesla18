@@ -11,10 +11,12 @@ import java.util.Set;
 public abstract class QiResult {
 
     @JsonCreator public static QiResult create() {
-        QualityInidicator arzt = QualityInidicator.create("arzt", "1.5");
-        return new AutoValue_QiResult(Collections.singleton(arzt));
+        Score arzt = Score.create("arzt", 1.5f);
+        return new AutoValue_QiResult(9.9f, Collections.singleton(arzt));
     }
 
-    @JsonProperty public abstract Set<QualityInidicator> inidicators();
+    @JsonProperty public abstract float overallScore();
+    
+    @JsonProperty public abstract Set<Score> inidicators();
 
 }

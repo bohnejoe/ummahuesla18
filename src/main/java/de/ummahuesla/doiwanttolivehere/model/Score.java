@@ -4,16 +4,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.auto.value.AutoValue;
 
-import static com.google.auto.value.AutoValue.*;
-
 @AutoValue
-abstract class QualityInidicator {
+public abstract class Score {
 
-    @JsonCreator public static QualityInidicator create(String name, String qi) {
-        return new AutoValue_QualityInidicator(name, qi);
+    @JsonCreator public static Score create(String name, float score) {
+        return new AutoValue_Score(name, score);
     }
 
     @JsonProperty public abstract String name();
-    @JsonProperty abstract String qi();
+    @JsonProperty abstract float score();
 
 }
