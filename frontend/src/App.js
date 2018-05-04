@@ -3,12 +3,33 @@ import GoogleMapReact from 'google-map-react';
 import './App.css';
 var env = require('./env.json');
 
-const AnyReactComponent = ({ text }) => <div className="marker">{text}</div>;
+class AnyReactComponent extends Component {
+  constructor(props) {
+    super();
+  }
+
+  componentDidUpdate = () => {
+    this._draw();
+  }
+
+  _draw = () => {
+    
+  }
+
+  render() {
+    return(
+      <div className='details'>
+        <canvas id='canvas'></canvas>
+        <div className={this.props.className}>{this.props.text}</div>
+      </div>
+    )
+  }
+};
 
 class SimpleMap extends Component {
   constructor(props){
     super(props);
-    this.state = { lat: 0, lng: 0, text: '' };
+    this.state = { lat: 0, lng: 0, text: '', qi: 0 };
   }
 
   static defaultProps = {
@@ -31,7 +52,7 @@ class SimpleMap extends Component {
       return result.json();
     }).then(data => {
       console.log(data);
-      this.setState({ lat: data.lat, lng: data.lng, text: data.qi});
+      this.setState({ lat: data.lat, lng: data.lng, text: data.qi, qi: data.qi });
     });
   }
 
@@ -48,6 +69,7 @@ class SimpleMap extends Component {
             lat={ this.state.lat }
             lng={ this.state.lng }
             text={ this.state.text }
+            className={ 'marker marker-'+Math.round(this.state.qi*10)}
           />
         </GoogleMapReact>
       </div>

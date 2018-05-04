@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c510182-0f25-45ec-bc6f-098b23fc97f4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" afterPath="$PROJECT_DIR$/frontend/src/App.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/ummahuesla/doiwanttolivehere/Controller/QualityIndex.java" afterPath="$PROJECT_DIR$/src/main/java/de/ummahuesla/doiwanttolivehere/Controller/QualityIndex.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/ummahuesla/doiwanttolivehere/model/QiResult.java" afterPath="$PROJECT_DIR$/src/main/java/de/ummahuesla/doiwanttolivehere/model/QiResult.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/ummahuesla/doiwanttolivehere/model/QualityInidicator.java" afterPath="$PROJECT_DIR$/src/main/java/de/ummahuesla/doiwanttolivehere/model/QualityInidicator.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/ummahuesla/doiwanttolivehere/repository/Noise.class" afterPath="$PROJECT_DIR$/target/classes/de/ummahuesla/doiwanttolivehere/repository/Noise.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/ummahuesla/doiwanttolivehere/repository/Supermarket.class" afterPath="$PROJECT_DIR$/target/classes/de/ummahuesla/doiwanttolivehere/repository/Supermarket.class" />
-    </list>
+    <list default="true" id="0c510182-0f25-45ec-bc6f-098b23fc97f4" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/de/ummahuesla/doiwanttolivehere/model/QualityInidicator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -244,6 +236,18 @@
       <envs />
       <patterns />
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="doiwanttolivehere" />
+      <envs />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -394,6 +398,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -436,7 +441,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/de/ummahuesla/doiwanttolivehere/model/QualityInidicator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
