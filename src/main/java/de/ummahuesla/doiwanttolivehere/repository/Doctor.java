@@ -3,5 +3,7 @@ package de.ummahuesla.doiwanttolivehere.repository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class Doctor {
+public interface Doctor {
+    public float calculateQi();
+
 }
