@@ -9,17 +9,18 @@ class AnyReactComponent extends Component {
   }
 
   componentDidUpdate = () => {
-    this._draw();
+    // this._draw();
+    console.log(this.props);
   }
 
   _draw = () => {
-    
+
   }
 
   render() {
     return(
       <div className='details'>
-        <canvas id='canvas'></canvas>
+        <canvas ref='canvas' id='canvas'></canvas>
         <div className={this.props.className}>{this.props.text}</div>
       </div>
     )
@@ -45,14 +46,14 @@ class SimpleMap extends Component {
   };
 
   _onChildClick = (obj) => {
-    fetch('http://localhost:8080/?lat='+ obj.lat +'&lon='+ obj.lng,
+    fetch('http://localhost:8080/?lat='+ obj.lat +'&lng='+ obj.lng,
       new Headers({
       'Access-Control-Allow-Origin': '*'
     })).then(result => {
       return result.json();
     }).then(data => {
       console.log(data);
-      this.setState({ lat: data.lat, lng: data.lng, text: data.qi, qi: data.qi });
+      this.setState({ lat: data.lat, lng: data.lng, text: data.overallScore, qi: data.overallScore });
     });
   }
 
@@ -69,7 +70,7 @@ class SimpleMap extends Component {
             lat={ this.state.lat }
             lng={ this.state.lng }
             text={ this.state.text }
-            className={ 'marker marker-'+Math.round(this.state.qi*10)}
+            className={ 'marker marker-'+Math.round(this.state.qi*10) }
           />
         </GoogleMapReact>
       </div>
