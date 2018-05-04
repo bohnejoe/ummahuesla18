@@ -7,59 +7,59 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 @Repository
 @EnableCaching
 public class SunlightRepository {
 
-    public Optional<Sunlight> fetch(Double lng, Double lat) {
-        //String s = "http://wirtschaft-risby.bayern.de/RisGate/servlet/Sonnenscheindauer?version=1.1.1&request=GetFeatureInfo&layers=sd_jahr&styles=default&SRS=EPSG:4326&bbox=11.57549,48.1374283,11.57559,48.1374293&width=1044&height=906&format=text/html&X=500&Y=400&query_layers=sd_jahr";
-
+    public Optional<Sunlight> fetch(Double lat, Double lng) {
         String endpoint = "http://wirtschaft-risby.bayern.de/RisGate/servlet/Sonnenscheindauer";
-//        endpoint = "http://localhost:8000/Sonnenscheindauer.xml";
 
         RestTemplate restTemplate = new RestTemplate();
-        Map<String, String> params = new Request().create(lng, lat);
-        ResponseEntity<Sunlight> result = restTemplate.execute(
-                endpoint,
-                HttpMethod.GET,
-                clientHttpRequest -> {
-                },
-                clientHttpResponse -> {
-                    Scanner s12 = new Scanner(clientHttpResponse.getBody()).useDelimiter("\\A");
-                    String s1 = s12.hasNext() ? s12.next() : "";
+        MultiValueMap<String, String> params = new Request().create(lat, lng);
 
-                    XmlMapper xmlMapper = new XmlMapper();
-                    Sunlight readValue = xmlMapper.readValue(s1, Sunlight.class);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(endpoint);
+        builder.queryParams(params);
+        String s = builder.toUriString();
+        Sunlight result = restTemplate.getForObject(builder.toUriString(), Sunlight.class);
 
-                    return new ResponseEntity<Sunlight>(readValue, HttpStatus.OK);
-                }, params);
-
-        return Optional.of(result.getBody());
+        return Optional.of(result);
     }
 
     private class Request {
-        public Map<String, String> create(Double lng, Double lat) {
-            HashMap<String, String> map = new HashMap<>();
-            map.put("version", "1.1.1");
-            map.put("request", "GetFeatureInfo");
-            map.put("layers", "sd_jahr");
-            map.put("styles", "default");
-            map.put("srs", "EPSG:4326");
-            map.put("bbox", lng + "," + lat + "," + lng + "," + lat);
-            //map.put("bbox", "11.57549,48.1374283,11.57559,48.1374293");
-            map.put("width", "1044");
-            map.put("height", "906");
-            map.put("format", "text/html");
-            map.put("x", "500");
-            map.put("y", "400");
-            map.put("query_layers", "sd_jahr");
+        public MultiValueMap<String, String> create(Double lat, Double lng) {
+
+            double meters = 50;
+
+            // number of km per degree = ~111km (111.32 in google maps, but range varies between 110.567km at the equator and 111.699km at the poles)
+            // 1km in degree = 1 / 111.32km = 0.0089
+            // 1m in degree = 0.0089 / 1000 = 0.0000089
+            double coef = meters * 0.0000089;
+
+            double new_latitude = lat + coef;
+
+            // pi / 180 = 0.018
+            double new_longitude = lng + coef / Math.cos(lat * 0.018);
+
+            MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+            map.put("version", Collections.singletonList("1.1.1"));
+            map.put("request", Collections.singletonList("GetFeatureInfo"));
+            map.put("layers", Collections.singletonList("sd_jahr"));
+            map.put("styles", Collections.singletonList("default"));
+            map.put("srs", Collections.singletonList("EPSG:4326"));
+            map.put("bbox", Collections.singletonList(lng + "," + lat + "," + new_longitude + "," + new_latitude));
+            map.put("width", Collections.singletonList("1044"));
+            map.put("height", Collections.singletonList("906"));
+            map.put("format", Collections.singletonList("text/html"));
+            map.put("x", Collections.singletonList("500"));
+            map.put("y", Collections.singletonList("400"));
+            map.put("query_layers", Collections.singletonList("sd_jahr"));
             return map;
         }
     }

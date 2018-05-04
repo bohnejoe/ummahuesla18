@@ -19,9 +19,9 @@ public class QualityIndex {
     
 
     @RequestMapping(value = "/", produces = "application/json")
-    String index(@RequestParam String lon, @RequestParam String lat) throws JsonProcessingException {
+    String index(@RequestParam String lat, @RequestParam String lng) throws JsonProcessingException {
     	ObjectMapper objectMapper = new ObjectMapper();
-    	QiResult result = qiService.fetch(Double.parseDouble(lat), Double.parseDouble(lon));
+    	QiResult result = qiService.fetch(Double.parseDouble(lat), Double.parseDouble(lng));
 		return objectMapper.writeValueAsString(result);
     }
 
