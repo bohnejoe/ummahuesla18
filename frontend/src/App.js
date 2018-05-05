@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import logo from './logo.svg';
 import './App.css';
 import './marker1.css';
 import './marker2.css';
@@ -82,12 +83,12 @@ class SimpleMap extends Component {
 
   static defaultProps = {
     center: {
-      lat:  47.677950,
-      lng: 9.173238
+      lat:  48.135125,
+      lng: 11.581980
     },
     location: {
-      lat: 45.6779500,
-      lng: 9.173238
+      lat: 48.135125,
+      lng: 11.581980
     },
     zoom: 11
   };
@@ -114,6 +115,7 @@ class SimpleMap extends Component {
   render() {
     return (
       <div style={{ height: '100vh', width: '100%' }}>
+        <img src={logo} className="logo" alt="logo" />
         <GoogleMapReact
           bootstrapURLKeys={{ key: env.google }}
           defaultCenter={this.props.center}

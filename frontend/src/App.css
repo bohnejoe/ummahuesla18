@@ -39,7 +39,13 @@
     line-height: 50px;
     transition: 0.1s all ease-in-out;
 }
-
+.logo{
+  position: absolute;
+  top: 0;
+  left: calc(50% - 250px);
+  z-index: 1000;
+  width: 500px;
+}
 .marker span {
   display:none;
 }
