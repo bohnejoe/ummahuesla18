@@ -32,6 +32,38 @@
   height: 400px;
 }
 
+.marker.marker-small {
+    font-size: 1.5em;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    transition: 0.1s all ease-in-out;
+}
+
+.marker span {
+  display:none;
+}
+.marker.marker-small:hover {
+  transform: scale(3);
+  line-height:60px;
+  z-index:199;
+}
+.marker:hover span {
+  color: #333;
+  top: 50%;
+  display: block;
+  position: absolute;
+  line-height: 1.4em;
+  color: #444;
+  font-size: 0.3em;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  font-weight: normal;
+  margin: 1em;
+  word-wrap: break-word;
+}
+
 .marker {
     text-transform: uppercase;
     display: inline-block;
