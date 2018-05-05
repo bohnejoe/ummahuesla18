@@ -6,22 +6,62 @@ var env = require('./env.json');
 class AnyReactComponent extends Component {
   constructor(props) {
     super();
+    this.state = {
+      items: [],
+      indicators: []
+    }
   }
 
   componentDidUpdate = () => {
-    // this._draw();
-    console.log(this.props);
+    // this._generatePositions();
   }
 
-  _draw = () => {
+  _generatePositions = () => {
+    var items = [];
 
+    var amount = this.props.indicators ? this.props.indicators.length : 0;
+    var rad_distance = (360/amount * 3.1415)/180;
+    var width = 400;
+    // Push items to array
+    for (var i = 0; i < amount; i++) {
+      var item = this.props.indicators[i];
+      var degrees = i*rad_distance;
+      var radius = width*0.3;
+      var xx = width/2.0 + radius*Math.cos(degrees) - 40;
+      var xy = width/2.0 + radius*Math.sin(degrees) - 40;
+      items.push({
+        x: xx,
+        y: xy,
+        radius: 10,
+        vx: Math.floor(Math.random() * 50) - 25,
+        vy: Math.floor(Math.random() * 50) - 25,
+        item: item
+      });
+    }
+    return items;
   }
 
   render() {
+    var items = this._generatePositions();
+
+    const indicators = items.map((item)=> {
+      const qi = Math.round(item.item.score*10)/10;
+      const markerClassname = 'marker-small marker marker-'+ qi*10;
+      const divStyle = {
+        position:'absolute',
+        left: item.x,
+        top: item.y
+      };
+      return (<div className={markerClassname} style={divStyle}>{qi}<span ref='name'>{item.item.name}</span></div>)
+    });
+
+    const data = this.props.text === undefined  ? (
+      <div className="lds-ripple"><div></div><div></div></div>
+    ) : (<div className={this.props.className}>{this.props.text}</div>)
     return(
       <div className='details'>
-        <canvas ref='canvas' id='canvas'></canvas>
-        <div className={this.props.className}>{this.props.text}</div>
+        {indicators}
+        {data}
       </div>
     )
   }
@@ -46,14 +86,21 @@ class SimpleMap extends Component {
   };
 
   _onChildClick = (obj) => {
+    this.setState({ lat: obj.lat, lng: obj.lng, text: undefined, qi: 0 });
+
     fetch('http://localhost:8080/?lat='+ obj.lat +'&lng='+ obj.lng,
       new Headers({
       'Access-Control-Allow-Origin': '*'
     })).then(result => {
       return result.json();
     }).then(data => {
-      console.log(data);
-      this.setState({ lat: data.lat, lng: data.lng, text: data.overallScore, qi: data.overallScore });
+      this.setState({
+        lat: data.lat,
+        lng: data.lng,
+        text: Math.round(data.overallScore*10)/10.0,
+        qi: data.overallScore,
+        indicators: data.inidicators
+      });
     });
   }
 
@@ -70,6 +117,7 @@ class SimpleMap extends Component {
             lat={ this.state.lat }
             lng={ this.state.lng }
             text={ this.state.text }
+            indicators={ this.state.indicators }
             className={ 'marker marker-'+Math.round(this.state.qi*10) }
           />
         </GoogleMapReact>
