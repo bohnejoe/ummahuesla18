@@ -61,7 +61,7 @@ class AnyReactComponent extends Component {
         left: item.x,
         top: item.y
       };
-      return (<div className={markerClassname} style={divStyle}>{qi}<span ref='name'>{item.item.name}</span></div>)
+      return (<div className={markerClassname} style={divStyle}>{qi}<smaller>pkt</smaller><span ref='name'>{item.item.name}</span></div>)
     });
 
     const data = this.props.text === undefined  ? (

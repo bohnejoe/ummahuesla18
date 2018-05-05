@@ -46,15 +46,22 @@
   z-index: 1000;
   width: 500px;
 }
-.marker span {
+.marker span,
+.marker smaller {
   display:none;
+}
+.marker smaller {
+  font-size: 0.2em;
+}
+.marker:hover smaller {
+  display: inline;
 }
 .marker.marker-small:hover {
   transform: scale(3);
   line-height:40px;
   z-index:199;
 }
-.marker:hover span {
+.marker:hover span{
   top: 50%;
   display: block;
   position: absolute;
