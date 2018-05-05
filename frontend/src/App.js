@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './App.css';
+import './marker1.css';
+import './marker2.css';
+import './marker3.css';
+import './marker4.css';
+import './marker5.css';
+import './marker6.css';
+
 var env = require('./env.json');
 
 class AnyReactComponent extends Component {
@@ -44,9 +51,9 @@ class AnyReactComponent extends Component {
   render() {
     var items = this._generatePositions();
 
-    const indicators = items.map((item)=> {
-      const qi = Math.round(item.item.score*10)/10;
-      const markerClassname = 'marker-small marker marker-'+ qi*10;
+    const indicators = items.map((item,index)=> {
+      const qi = Math.min(Math.round(item.item.score*10)/10,9.9);
+      const markerClassname = 'marker-small marker marker-'+ (index%6+1) +'-'+ qi*10;
       const divStyle = {
         position:'absolute',
         left: item.x,
