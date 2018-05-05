@@ -49,12 +49,11 @@
   z-index:199;
 }
 .marker:hover span {
-  color: #333;
   top: 50%;
   display: block;
   position: absolute;
   line-height: 1.4em;
-  color: #444;
+  color: #fff;
   font-size: 0.3em;
   left: 0px;
   right: 0px;
