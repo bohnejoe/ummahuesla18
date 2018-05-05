@@ -47,7 +47,7 @@ public class QualityIndexService {
     public void init() {
     	collectors.add(nearbyDoctorsCollector);
     	collectors.add(nearbySupermarketsCollector);
-//    	collectors.add(sunHoursPerYearCollector);
+    	collectors.add(sunHoursPerYearCollector);
     	collectors.add(transportConnectionCollector);
     	collectors.add(playgroundCollector);
     	collectors.add(schoolCollector);
