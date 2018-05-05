@@ -11,7 +11,14 @@ public class SchoolCollector extends Collector {
 
 	@Override
 	public Score getScore(Double lat, Double lon) {
-		return Score.create("Schulen in der Umgebung", ThreadLocalRandom.current().nextDouble(scoreMin, scoreMax+ 1));
+		double nextDouble = ThreadLocalRandom.current().nextDouble(scoreMin, scoreMax + 0.1);
+		
+		//return null randomly
+		if(nextDouble < 0.5) {
+			return null;
+		}
+		
+		return Score.create("Schulen in der Umgebung", nextDouble);
 	}
 
 }
