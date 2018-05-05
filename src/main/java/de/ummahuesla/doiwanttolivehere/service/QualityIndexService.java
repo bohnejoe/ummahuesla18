@@ -1,13 +1,12 @@
 package de.ummahuesla.doiwanttolivehere.service;
 
-import java.util.HashSet;
-import java.util.OptionalDouble;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import de.ummahuesla.doiwanttolivehere.collectors.Collector;
@@ -23,50 +22,30 @@ import de.ummahuesla.doiwanttolivehere.model.Score;
 @Service
 public class QualityIndexService {
 
-    private Set<Collector> collectors = new HashSet<Collector>();
-    
+    final private Collection<Collector> collectors = new HashSet<>();
+
     @Autowired
-    private NearbySupermarketsCollector nearbySupermarketsCollector;
-    
-    @Autowired
-    private NearbyDoctorsCollector nearbyDoctorsCollector;
-    
-    @Autowired
-	private SunHoursPerYearCollector sunHoursPerYearCollector;
-    
-    @Autowired
-    private PlaygroundCollector playgroundCollector;
-    
-    @Autowired
-    private SchoolCollector schoolCollector;
-    
-    @Autowired
-    private TransportConnectionCollector transportConnectionCollector;
-    
+    private ApplicationContext appContext;
+
     @PostConstruct
     public void init() {
-    	collectors.add(nearbyDoctorsCollector);
-    	collectors.add(nearbySupermarketsCollector);
-    	collectors.add(sunHoursPerYearCollector);
-    	collectors.add(transportConnectionCollector);
-    	collectors.add(playgroundCollector);
-    	collectors.add(schoolCollector);
+        collectors.addAll(appContext.getBeansOfType(Collector.class).values());
     }
 
-	public QiResult fetch(Double lat, Double lng) {
-		Set<Score> scores = collectors.stream()
-				.map(c -> c.getScore(lat, lng))
-				.filter(c -> c !=null && c.score() != 0)
-				.collect(Collectors.toSet());
-		
-		OptionalDouble overallScoreAverage = scores.stream().mapToDouble(s -> s.score()).average();
-		Double overallScore = 0.0;
-		if(overallScoreAverage.isPresent()) {
-			overallScore = overallScoreAverage.getAsDouble();
-		}
+    public QiResult fetch(Double lat, Double lng) {
+        Set<Score> scores = collectors.stream()
+                .map(c -> c.getScore(lat, lng))
+                .filter(c -> c != null && c.score() != 0)
+                .collect(Collectors.toSet());
 
-		QiResult qiResult = QiResult.create(lat, lng, overallScore, scores);
-		return qiResult;
-	}
-	
+        OptionalDouble overallScoreAverage = scores.stream().mapToDouble(s -> s.score()).average();
+        Double overallScore = 0.0;
+        if (overallScoreAverage.isPresent()) {
+            overallScore = overallScoreAverage.getAsDouble();
+        }
+
+        QiResult qiResult = QiResult.create(lat, lng, overallScore, scores);
+        return qiResult;
+    }
+
 }
