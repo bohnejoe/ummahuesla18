@@ -93,7 +93,7 @@ class SimpleMap extends Component {
   };
 
   _onChildClick = (obj) => {
-    this.setState({ lat: obj.lat, lng: obj.lng, text: undefined, qi: 0 });
+    this.setState({ lat: obj.lat, lng: obj.lng, text: undefined, qi: 0, indicators: []});
 
     fetch('http://localhost:8080/?lat='+ obj.lat +'&lng='+ obj.lng,
       new Headers({
