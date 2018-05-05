@@ -23,7 +23,7 @@ public class SunHoursPerYearCollector extends Collector {
     public Score getScore(Double lat, Double lng) {
         Optional<Sunlight> fetch = sunlightRepository.fetch(lat, lng);
 
-        Integer result = fetch
+        Double score = fetch
                 .filter(s -> Objects.nonNull(s.fields))
                 .map(s -> s.fields.sdJahr)
                 .map(s -> {
@@ -35,12 +35,14 @@ public class SunHoursPerYearCollector extends Collector {
                     }
                     return maxHoursPerYear;
                 })
-                .orElse(0);
-
-        double score = 100d / 2000d * result / 10;
-
+                .map(this::calculateScore)
+                .orElse(0d);
 
         return Score.create("Sonnenstunden pro Jahr", score);
+    }
+
+    private double calculateScore(Integer result) {
+        return 100d / 2000d * result / 10;
     }
 
 }
