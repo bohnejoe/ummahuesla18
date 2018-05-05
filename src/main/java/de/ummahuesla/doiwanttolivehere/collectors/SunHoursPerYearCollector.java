@@ -1,5 +1,6 @@
 package de.ummahuesla.doiwanttolivehere.collectors;
 
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -23,6 +24,7 @@ public class SunHoursPerYearCollector extends Collector {
         Optional<Sunlight> fetch = sunlightRepository.fetch(lat, lng);
 
         Integer result = fetch
+                .filter(s -> Objects.nonNull(s.fields))
                 .map(s -> s.fields.sdJahr)
                 .map(s -> {
                     int maxHoursPerYear = 0;
