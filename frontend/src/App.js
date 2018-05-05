@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import logo from './logo.svg';
 import './App.css';
+import './marker.css';
 import './marker1.css';
 import './marker2.css';
 import './marker3.css';
@@ -54,7 +55,7 @@ class AnyReactComponent extends Component {
 
     const indicators = items.map((item,index)=> {
       const qi = Math.min(Math.round(item.item.score*10)/10,9.9);
-      const markerClassname = 'marker-small marker marker-'+ (index%6+1) +'-'+ qi*10;
+      const markerClassname = 'marker-small marker marker-'+ qi*10;
       const divStyle = {
         position:'absolute',
         left: item.x,

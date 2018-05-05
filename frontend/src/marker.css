@@ -1,0 +1,404 @@
+.marker-0 {
+background-color: #FF3432;
+transform: scale(0.5);
+}
+.marker-1 {
+background-color: #FF3432;
+transform: scale(0.5);
+}
+.marker-2 {
+background-color: #FD3D33;
+transform: scale(0.505);
+}
+.marker-3 {
+background-color: #FD3D33;
+transform: scale(0.51);
+}
+.marker-4 {
+background-color: #FC4534;
+transform: scale(0.51);
+}
+.marker-5 {
+background-color: #FC4534;
+transform: scale(0.52);
+}
+.marker-6 {
+background-color: #FA4D35;
+transform: scale(0.515);
+}
+.marker-7 {
+background-color: #FA4D35;
+transform: scale(0.53);
+}
+.marker-8 {
+background-color: #F95536;
+transform: scale(0.52);
+}
+.marker-9 {
+background-color: #F95536;
+transform: scale(0.54);
+}
+.marker-10 {
+background-color: #F75C37;
+transform: scale(0.525);
+}
+.marker-11 {
+background-color: #F75C37;
+transform: scale(0.55);
+}
+.marker-12 {
+background-color: #F66437;
+transform: scale(0.53);
+}
+.marker-13 {
+background-color: #F66437;
+transform: scale(0.56);
+}
+.marker-14 {
+background-color: #F46B38;
+transform: scale(0.535);
+}
+.marker-15 {
+background-color: #F46B38;
+transform: scale(0.5700000000000001);
+}
+.marker-16 {
+background-color: #F37239;
+transform: scale(0.54);
+}
+.marker-17 {
+background-color: #F37239;
+transform: scale(0.58);
+}
+.marker-18 {
+background-color: #F1793A;
+transform: scale(0.545);
+}
+.marker-19 {
+background-color: #F1793A;
+transform: scale(0.59);
+}
+.marker-20 {
+background-color: #F0803A;
+transform: scale(0.55);
+}
+.marker-21 {
+background-color: #F0803A;
+transform: scale(0.6);
+}
+.marker-22 {
+background-color: #EE863B;
+transform: scale(0.555);
+}
+.marker-23 {
+background-color: #EE863B;
+transform: scale(0.61);
+}
+.marker-24 {
+background-color: #ED8D3C;
+transform: scale(0.56);
+}
+.marker-25 {
+background-color: #ED8D3C;
+transform: scale(0.62);
+}
+.marker-26 {
+background-color: #EB933D;
+transform: scale(0.565);
+}
+.marker-27 {
+background-color: #EB933D;
+transform: scale(0.63);
+}
+.marker-28 {
+background-color: #EA993D;
+transform: scale(0.5700000000000001);
+}
+.marker-29 {
+background-color: #EA993D;
+transform: scale(0.64);
+}
+.marker-30 {
+background-color: #E89F3E;
+transform: scale(0.575);
+}
+.marker-31 {
+background-color: #E89F3E;
+transform: scale(0.65);
+}
+.marker-32 {
+background-color: #E7A53F;
+transform: scale(0.58);
+}
+.marker-33 {
+background-color: #E7A53F;
+transform: scale(0.66);
+}
+.marker-34 {
+background-color: #E5AA3F;
+transform: scale(0.585);
+}
+.marker-35 {
+background-color: #E5AA3F;
+transform: scale(0.67);
+}
+.marker-36 {
+background-color: #E4AF40;
+transform: scale(0.59);
+}
+.marker-37 {
+background-color: #E4AF40;
+transform: scale(0.6799999999999999);
+}
+.marker-38 {
+background-color: #E2B540;
+transform: scale(0.595);
+}
+.marker-39 {
+background-color: #E2B540;
+transform: scale(0.69);
+}
+.marker-40 {
+background-color: #E1BA41;
+transform: scale(0.6);
+}
+.marker-41 {
+background-color: #E1BA41;
+transform: scale(0.7);
+}
+.marker-42 {
+background-color: #DFBF42;
+transform: scale(0.605);
+}
+.marker-43 {
+background-color: #DFBF42;
+transform: scale(0.71);
+}
+.marker-44 {
+background-color: #DEC342;
+transform: scale(0.61);
+}
+.marker-45 {
+background-color: #DEC342;
+transform: scale(0.72);
+}
+.marker-46 {
+background-color: #DCC843;
+transform: scale(0.615);
+}
+.marker-47 {
+background-color: #DCC843;
+transform: scale(0.73);
+}
+.marker-48 {
+background-color: #DBCC43;
+transform: scale(0.62);
+}
+.marker-49 {
+background-color: #DBCC43;
+transform: scale(0.74);
+}
+.marker-50 {
+background-color: #D9D144;
+transform: scale(0.625);
+}
+.marker-51 {
+background-color: #D9D144;
+transform: scale(0.75);
+}
+.marker-52 {
+background-color: #D8D544;
+transform: scale(0.63);
+}
+.marker-53 {
+background-color: #D8D544;
+transform: scale(0.76);
+}
+.marker-54 {
+background-color: #D4D645;
+transform: scale(0.635);
+}
+.marker-55 {
+background-color: #D4D645;
+transform: scale(0.77);
+}
+.marker-56 {
+background-color: #CDD545;
+transform: scale(0.64);
+}
+.marker-57 {
+background-color: #CDD545;
+transform: scale(0.78);
+}
+.marker-58 {
+background-color: #C6D346;
+transform: scale(0.645);
+}
+.marker-59 {
+background-color: #C6D346;
+transform: scale(0.79);
+}
+.marker-60 {
+background-color: #C0D246;
+transform: scale(0.65);
+}
+.marker-61 {
+background-color: #C0D246;
+transform: scale(0.8);
+}
+.marker-62 {
+background-color: #B9D047;
+transform: scale(0.655);
+}
+.marker-63 {
+background-color: #B9D047;
+transform: scale(0.81);
+}
+.marker-64 {
+background-color: #B3CF47;
+transform: scale(0.66);
+}
+.marker-65 {
+background-color: #B3CF47;
+transform: scale(0.8200000000000001);
+}
+.marker-66 {
+background-color: #ADCD48;
+transform: scale(0.665);
+}
+.marker-67 {
+background-color: #ADCD48;
+transform: scale(0.8300000000000001);
+}
+.marker-68 {
+background-color: #A7CC48;
+transform: scale(0.67);
+}
+.marker-69 {
+background-color: #A7CC48;
+transform: scale(0.8400000000000001);
+}
+.marker-70 {
+background-color: #A1CA48;
+transform: scale(0.675);
+}
+.marker-71 {
+background-color: #A1CA48;
+transform: scale(0.85);
+}
+.marker-72 {
+background-color: #9CC949;
+transform: scale(0.6799999999999999);
+}
+.marker-73 {
+background-color: #9CC949;
+transform: scale(0.86);
+}
+.marker-74 {
+background-color: #96C749;
+transform: scale(0.685);
+}
+.marker-75 {
+background-color: #96C749;
+transform: scale(0.87);
+}
+.marker-76 {
+background-color: #91C649;
+transform: scale(0.69);
+}
+.marker-77 {
+background-color: #91C649;
+transform: scale(0.88);
+}
+.marker-78 {
+background-color: #8BC44A;
+transform: scale(0.6950000000000001);
+}
+.marker-79 {
+background-color: #8BC44A;
+transform: scale(0.89);
+}
+.marker-80 {
+background-color: #86C34A;
+transform: scale(0.7);
+}
+.marker-81 {
+background-color: #86C34A;
+transform: scale(0.9);
+}
+.marker-82 {
+background-color: #81C14A;
+transform: scale(0.705);
+}
+.marker-83 {
+background-color: #81C14A;
+transform: scale(0.9099999999999999);
+}
+.marker-84 {
+background-color: #7CC04B;
+transform: scale(0.71);
+}
+.marker-85 {
+background-color: #7CC04B;
+transform: scale(0.9199999999999999);
+}
+.marker-86 {
+background-color: #78BE4B;
+transform: scale(0.715);
+}
+.marker-87 {
+background-color: #78BE4B;
+transform: scale(0.9299999999999999);
+}
+.marker-88 {
+background-color: #73BD4B;
+transform: scale(0.72);
+}
+.marker-89 {
+background-color: #73BD4B;
+transform: scale(0.94);
+}
+.marker-90 {
+background-color: #6EBB4C;
+transform: scale(0.725);
+}
+.marker-91 {
+background-color: #6EBB4C;
+transform: scale(0.95);
+}
+.marker-92 {
+background-color: #6ABA4C;
+transform: scale(0.73);
+}
+.marker-93 {
+background-color: #6ABA4C;
+transform: scale(0.96);
+}
+.marker-94 {
+background-color: #66B84C;
+transform: scale(0.735);
+}
+.marker-95 {
+background-color: #66B84C;
+transform: scale(0.97);
+}
+.marker-96 {
+background-color: #62B74C;
+transform: scale(0.74);
+}
+.marker-97 {
+background-color: #62B74C;
+transform: scale(0.98);
+}
+.marker-98 {
+background-color: #5DB64D;
+transform: scale(0.745);
+}
+.marker-99 {
+background-color: #5DB64D;
+transform: scale(0.99);
+}
+.marker-100 {
+background-color: #5DB64D;
+transform: scale(1);
+}
