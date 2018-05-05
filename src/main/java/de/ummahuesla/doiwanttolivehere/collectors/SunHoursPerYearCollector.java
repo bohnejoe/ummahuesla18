@@ -35,7 +35,10 @@ public class SunHoursPerYearCollector extends Collector {
                 })
                 .orElse(0);
 
-        return Score.create("Sonnenstunden pro Jahr", Double.valueOf(result));
+        double score = 100d / 2000d * result / 10;
+
+
+        return Score.create("Sonnenstunden pro Jahr", score);
     }
 
 }

@@ -61,7 +61,7 @@ public class QualityIndexService {
 		if(overallScoreAverage.isPresent()) {
 			overallScore = overallScoreAverage.getAsDouble();
 		}
-				
+
 		QiResult qiResult = QiResult.create(lat, lng, overallScore, scores);
 		return qiResult;
 	}
