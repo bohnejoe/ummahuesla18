@@ -27,15 +27,15 @@ class AnyReactComponent extends Component {
     var items = [];
 
     var amount = this.props.indicators ? this.props.indicators.length : 0;
-    var rad_distance = (360/amount * 3.1415)/180;
+    var rad_distance = (((360/amount) +15 ) * 3.1415)/180;
     var width = 400;
     // Push items to array
     for (var i = 0; i < amount; i++) {
       var item = this.props.indicators[i];
       var degrees = i*rad_distance;
-      var radius = width*0.3;
-      var xx = width/2.0 + radius*Math.cos(degrees) - 40;
-      var xy = width/2.0 + radius*Math.sin(degrees) - 40;
+      var radius = width*0.2;
+      var xx = width/2.0 + radius*Math.cos(degrees) - 25;
+      var xy = width/2.0 + radius*Math.sin(degrees) - 25;
       items.push({
         x: xx,
         y: xy,
