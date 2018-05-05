@@ -9,9 +9,11 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.UnknownHostException;
 import java.util.*;
 
 @Repository
@@ -30,9 +32,12 @@ public class SunlightRepository {
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(endpoint);
         builder.queryParams(params);
 
-        Sunlight result = restTemplate.getForObject(builder.toUriString(), Sunlight.class);
-
-        return Optional.of(result);
+        try {
+            Sunlight result = restTemplate.getForObject(builder.toUriString(), Sunlight.class);
+            return Optional.of(result);
+        } catch (RestClientException e) {
+            return Optional.empty();
+        }
     }
 
     private class Request {
