@@ -1,13 +1,11 @@
 package de.ummahuesla.doiwanttolivehere.repository;
 
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import de.ummahuesla.doiwanttolivehere.model.Sunlight;
-import de.ummahuesla.doiwanttolivehere.utils.BoundingBox;
+import de.ummahuesla.doiwanttolivehere.util.BoundingBox;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -31,7 +29,7 @@ public class SunlightRepository {
 
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(endpoint);
         builder.queryParams(params);
-        String s = builder.toUriString();
+
         Sunlight result = restTemplate.getForObject(builder.toUriString(), Sunlight.class);
 
         return Optional.of(result);
