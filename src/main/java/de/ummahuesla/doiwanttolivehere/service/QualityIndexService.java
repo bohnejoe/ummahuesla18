@@ -54,7 +54,10 @@ public class QualityIndexService {
     }
 
 	public QiResult fetch(Double lat, Double lng) {
-		Set<Score> scores = collectors.stream().map(c -> c.getScore(lat, lng)).collect(Collectors.toSet());
+		Set<Score> scores = collectors.stream()
+				.map(c -> c.getScore(lat, lng))
+				.filter(c -> c !=null)
+				.collect(Collectors.toSet());
 		
 		OptionalDouble overallScoreAverage = scores.stream().mapToDouble(s -> s.score()).average();
 		Double overallScore = 0.0;
